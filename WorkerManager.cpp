@@ -131,6 +131,62 @@ int WorkerManager::isExist(int id)
 	return index;
 }
 
+void WorkerManager::modifyWorker()
+{
+	if (this->fileIsEmpty)
+	{
+		cout << "文件不存在或者记录为空！" << endl;
+	}
+	else
+	{
+		cout << "请输入想要修改的职工编号：" << endl;
+		int id = 0;
+		cin >> id;
+		int index = this->isExist(id);
+		if (index > -1)
+		{
+			delete this->workerArr[index];
+			int newId = 0;
+			string newName = "";
+			int newType = 0;
+			cout << "查到该职工，请输入新职工号：" << endl;
+			cin >> newId;
+			cout << "请输入新姓名：" << endl;
+			cin >> newName;
+			cout << "请输入新岗位：" << endl;
+			cout << "1、普通员工" << endl;
+			cout << "2、经理" << endl;
+			cout << "3、老板" << endl;
+			cin >> newType;
+			Worker* worker = nullptr;
+			switch (newType)
+			{
+			case 1:
+				worker = new Employee(newId, newName, newType);
+				break;
+			case 2:
+				worker = new Manager(newId, newName, newType);
+				break;
+			case 3:
+				worker = new Boss(newId, newName, newType);
+				break;
+			default:
+				break;
+			}
+			this->workerArr[index] = worker;
+			this->save();
+			cout << "修改成功" << endl;
+		}
+		else
+		{
+			cout << "修改失败，未找到该职工" << endl;
+		}
+	}
+
+	system("pause");
+	system("cls");
+}
+
 void WorkerManager::save()
 {
 	ofstream ofs;

@@ -36,6 +36,7 @@ int main()
 			wm.deleteWorker();
 			break;
 		case 4: // 修改职工
+			wm.modifyWorker();
 			break;
 		case 5: // 查找职工
 			break;
