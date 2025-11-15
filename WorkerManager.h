@@ -25,6 +25,7 @@ public:
 	void deleteWorker();
 	int isExist(int id);
 	void modifyWorker();
+	void findWorker();
 
 
 private:

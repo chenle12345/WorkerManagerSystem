@@ -39,6 +39,7 @@ int main()
 			wm.modifyWorker();
 			break;
 		case 5: // 查找职工
+			wm.findWorker();
 			break;
 		case 6: // 排序职工
 			break;

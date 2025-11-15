@@ -187,6 +187,60 @@ void WorkerManager::modifyWorker()
 	system("cls");
 }
 
+void WorkerManager::findWorker()
+{
+	if (this->fileIsEmpty)
+	{
+		cout << "文件不存在或者为空" << endl;
+	}
+	else
+	{
+		cout << "请输入查找的方式：" << endl;
+		cout << "1、按职工编号查找" << endl;
+		cout << "2、按职工姓名查找" << endl;
+		int choice = 0;
+		cin >> choice;
+		if (choice == 1)
+		{
+			int id = 0;
+			cout << "请输入查找的职工编号：" << endl;
+			cin >> id;
+			int index = this->isExist(id);
+			if (index != -1)
+			{
+				this->workerArr[index]->showInfo();
+			}
+			else
+			{
+				cout << "查无此人" << endl;
+			}
+		}
+		else if (choice == 2)
+		{
+			string name;
+			cout << "请输入查找的职工姓名：" << endl;
+			cin >> name;
+			bool flag = false;
+			for (int i = 0; i < this->empNum; i++)
+			{
+				if (this->workerArr[i]->m_Name == name)
+				{
+					this->workerArr[i]->showInfo();
+					flag = true;
+				}
+			}
+			if (flag == false)
+			{
+				cout << "查无此人" << endl;
+			}
+		}
+
+		system("pause");
+		system("cls");
+		
+	}
+}
+
 void WorkerManager::save()
 {
 	ofstream ofs;
