@@ -9,7 +9,7 @@ using namespace std;
 class WorkerManager
 {
 public:
-	WorkerManager(int empNum, Worker** workerArr);
+	WorkerManager(int empNum, Worker** workerArr, bool fileIsEmpty);
 	WorkerManager();
 	~WorkerManager();
 	//Õ¹Ê¾²Ëµ¥
@@ -27,6 +27,7 @@ public:
 	void modifyWorker();
 	void findWorker();
 	void sortWorker();
+	void cleanFile();
 
 
 

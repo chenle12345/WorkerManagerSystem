@@ -6,10 +6,11 @@
 
 
 
-WorkerManager::WorkerManager(int empNum, Worker** workerArr)
+WorkerManager::WorkerManager(int empNum, Worker** workerArr, bool fileIsEmpty)
 {
 	this->empNum = empNum;
 	this->workerArr = workerArr;
+	this->fileIsEmpty = fileIsEmpty;
 }
 
 WorkerManager::WorkerManager()
@@ -287,6 +288,28 @@ void WorkerManager::sortWorker()
 		this->showWorker();
 		this->save();
 	}
+}
+
+void WorkerManager::cleanFile()
+{
+	ofstream ofs;
+	ofs.open(FILENAME, ios::trunc);
+	ofs.close();
+	if (this->workerArr != NULL)
+	{
+		for (int i = 0; i < this->empNum; i++)
+		{
+			delete this->workerArr[i];
+			this->workerArr = nullptr;
+		}
+		delete[] this->workerArr;
+		this->workerArr = nullptr;
+		this->empNum = 0;
+		this->fileIsEmpty = true;
+		cout << "Çå¿Õ³É¹¦£¡" << endl;
+	}
+	system("pause");
+	system("cls");
 }
 
 void WorkerManager::save()

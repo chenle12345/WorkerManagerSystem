@@ -45,6 +45,7 @@ int main()
 			wm.sortWorker();
 			break;
 		case 7: // 清空文档
+			wm.cleanFile();
 			break;
 		default:
 			system("cls"); // 清屏操作
