@@ -62,6 +62,12 @@ WorkerManager::~WorkerManager()
 {
 	if (this->workerArr != nullptr)
 	{
+		for (int i = 0; i < this->empNum; i++)
+		{
+			delete this->workerArr[i];
+			this->workerArr[i] = nullptr;
+
+		}
 		delete[] this->workerArr;
 		this->workerArr = nullptr;
 	}
