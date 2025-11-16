@@ -26,7 +26,7 @@ public:
 	int isExist(int id);
 	void modifyWorker();
 	void findWorker();
-
+	void sortWorker();
 
 
 

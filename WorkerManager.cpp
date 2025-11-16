@@ -241,6 +241,54 @@ void WorkerManager::findWorker()
 	}
 }
 
+void WorkerManager::sortWorker()
+{
+	if (this->fileIsEmpty)
+	{
+		cout << "文件不存在或为空" << endl;
+		system("pause");
+		system("cls");
+	}
+	else
+	{
+		cout << "请选择排序的方式" << endl;
+		cout << "1、按升序排序" << endl;
+		cout << "2、按降序排序" << endl;
+		int type = 0;
+		cin >> type;
+		for (int i = 0; i < this->empNum; i++)
+		{
+			int maxOrMin = i;
+			for (int j = i + 1; j < this->empNum; j++)
+			{
+				if (type == 1) //升序
+				{
+					if (this->workerArr[j]->m_Id < this->workerArr[maxOrMin]->m_Id)
+					{
+						maxOrMin = j;
+					}
+				}
+				else  //降序
+				{
+					if (this->workerArr[j]->m_Id > this->workerArr[maxOrMin]->m_Id)
+					{
+						maxOrMin = j;
+					}
+				}
+			}
+			if (i != maxOrMin)
+			{
+				Worker* tmp = this->workerArr[i];
+				this->workerArr[i] = this->workerArr[maxOrMin];
+				this->workerArr[maxOrMin] = tmp;
+			}
+		}
+		cout << "排序成功，排序后结果为：" << endl;
+		this->showWorker();
+		this->save();
+	}
+}
+
 void WorkerManager::save()
 {
 	ofstream ofs;

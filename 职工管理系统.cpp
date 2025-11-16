@@ -42,6 +42,7 @@ int main()
 			wm.findWorker();
 			break;
 		case 6: // 排序职工
+			wm.sortWorker();
 			break;
 		case 7: // 清空文档
 			break;
